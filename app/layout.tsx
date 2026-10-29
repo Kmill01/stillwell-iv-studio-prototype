@@ -1,5 +1,8 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { BookingProvider } from '@/components/site/booking-provider'
+import { SiteFooter } from '@/components/site/site-footer'
+import { SiteHeader } from '@/components/site/site-header'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -41,7 +44,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
+        <BookingProvider>
+          <div className="site-shell">
+            <SiteHeader />
+            <main>{children}</main>
+            <SiteFooter />
+          </div>
+        </BookingProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
