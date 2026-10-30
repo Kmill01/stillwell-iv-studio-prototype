@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import { BookingProvider } from '@/components/site/booking-provider'
 import { SiteFooter } from '@/components/site/site-footer'
@@ -52,6 +53,7 @@ export default function RootLayout({
           </div>
         </BookingProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <SpeedInsights />
       </body>
     </html>
   )
